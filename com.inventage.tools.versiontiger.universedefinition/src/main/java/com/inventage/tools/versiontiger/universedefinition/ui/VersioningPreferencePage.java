@@ -3,8 +3,7 @@ package com.inventage.tools.versiontiger.universedefinition.ui;
 import java.io.File;
 import java.util.List;
 
-import org.eclipse.core.databinding.beans.BeanProperties;
-import org.eclipse.core.databinding.beans.BeansObservables;
+import org.eclipse.core.databinding.beans.typed.BeanProperties;
 import org.eclipse.core.databinding.observable.set.IObservableSet;
 import org.eclipse.core.databinding.property.value.IValueProperty;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -85,7 +84,7 @@ public class VersioningPreferencePage extends PreferencePage implements IWorkben
 
 		tableViewer.setSorter(new ViewerSorter());
 
-		IObservableSet input = BeansObservables.observeSet(universeDefinitionsModel, UniverseDefinitionsModel.PN_UNIVERSE_FILES);
+		IObservableSet input = BeanProperties.set(UniverseDefinitionsModel.PN_UNIVERSE_FILES).observe(universeDefinitionsModel);
 		IValueProperty[] labelProperties = BeanProperties.values(new String[] { UniverseFile.PN_NAME, UniverseFile.PN_LOCATION });
 		ViewerSupport.bind(tableViewer, input, labelProperties);
 

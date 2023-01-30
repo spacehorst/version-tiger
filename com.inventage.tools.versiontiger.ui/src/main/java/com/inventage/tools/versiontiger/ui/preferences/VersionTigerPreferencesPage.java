@@ -7,10 +7,10 @@ import java.util.List;
 
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.UpdateValueStrategy;
-import org.eclipse.core.databinding.beans.BeansObservables;
+import org.eclipse.core.databinding.beans.typed.BeanProperties;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
-import org.eclipse.jface.databinding.swt.WidgetProperties;
-import org.eclipse.jface.databinding.viewers.ViewerProperties;
+import org.eclipse.jface.databinding.swt.typed.WidgetProperties;
+import org.eclipse.jface.databinding.viewers.typed.ViewerProperties;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferencePage;
@@ -110,14 +110,14 @@ public class VersionTigerPreferencesPage extends PreferencePage implements IWork
 		mavenToOsgiVersionMapping.setInput(MavenToOsgiVersionMappingStrategy.values());
 		
 		IObservableValue versionMappingTargetObservable = ViewerProperties.singleSelection().observe(mavenToOsgiVersionMapping);
-		IObservableValue versionMappingModelObservable = BeansObservables.observeValue(model, PreferencesPageModel.PN_MAVEN_TO_OSGI_VERSION_MAPPING_STRATEGY);
+		IObservableValue versionMappingModelObservable = BeanProperties.value(PreferencesPageModel.PN_MAVEN_TO_OSGI_VERSION_MAPPING_STRATEGY).observe(model);
 		dataBindingContext.bindValue(versionMappingTargetObservable, versionMappingModelObservable, null, null);
 		
 		Label description = new Label(group, SWT.WRAP);
 		GridDataFactory.fillDefaults().grab(true, true).hint(150, SWT.DEFAULT).applyTo(description);
 		
 		IObservableValue descriptionTargetObservable = WidgetProperties.text().observe(description);
-		IObservableValue descriptionModelObservable = BeansObservables.observeValue(model, PreferencesPageModel.PN_MAVEN_TO_OSGI_VERSION_MAPPING_STRATEGY_DESCRIPTION);
+		IObservableValue descriptionModelObservable = BeanProperties.value(PreferencesPageModel.PN_MAVEN_TO_OSGI_VERSION_MAPPING_STRATEGY_DESCRIPTION).observe(model);
 		dataBindingContext.bindValue(descriptionTargetObservable, descriptionModelObservable, null, null);
 		
 		model.addPropertyChangeListener(PreferencesPageModel.PN_MAVEN_TO_OSGI_VERSION_MAPPING_STRATEGY_DESCRIPTION, new PropertyChangeListener() {
@@ -137,7 +137,7 @@ public class VersionTigerPreferencesPage extends PreferencePage implements IWork
 		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.TOP).grab(true, false).applyTo(customOsgiReleaseQualifier);
 		
 		IObservableValue releaseText = WidgetProperties.text(SWT.Modify).observe(customOsgiReleaseQualifier);
-		IObservableValue releaseModel = BeansObservables.observeValue(model, PreferencesPageModel.PN_OSGI_RELEASE_QUALIFIER);
+		IObservableValue releaseModel = BeanProperties.value(PreferencesPageModel.PN_OSGI_RELEASE_QUALIFIER).observe(model);
 		dataBindingContext.bindValue(releaseText, releaseModel, strategy, null);
 		
 		customQualifiersControls.add(customOsgiReleaseQualifierLabel);
@@ -152,7 +152,7 @@ public class VersionTigerPreferencesPage extends PreferencePage implements IWork
 		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.TOP).grab(true, false).applyTo(customOsgiSnapshotQualifier);
 		
 		IObservableValue snapshotText = WidgetProperties.text(SWT.Modify).observe(customOsgiSnapshotQualifier);
-		IObservableValue snapshotModel = BeansObservables.observeValue(model, PreferencesPageModel.PN_OSGI_SNAPSHOT_QUALIFIER);
+		IObservableValue snapshotModel = BeanProperties.value(PreferencesPageModel.PN_OSGI_SNAPSHOT_QUALIFIER).observe(model);
 		dataBindingContext.bindValue(snapshotText, snapshotModel, strategy, null);
 		
 		customQualifiersControls.add(customOsgiSnapshotQualifierLabel);
@@ -177,14 +177,14 @@ public class VersionTigerPreferencesPage extends PreferencePage implements IWork
 		versionRangeChange.setInput(VersionRangeChangeStrategy.values());
 		
 		IObservableValue versionRangeTargetObservable = ViewerProperties.singleSelection().observe(versionRangeChange);
-		IObservableValue versionRangeModelObservable = BeansObservables.observeValue(model, PreferencesPageModel.PN_VERSION_RANGE_CHANGE_STRATEGY);
+		IObservableValue versionRangeModelObservable = BeanProperties.value(PreferencesPageModel.PN_VERSION_RANGE_CHANGE_STRATEGY).observe(model);
 		dataBindingContext.bindValue(versionRangeTargetObservable, versionRangeModelObservable, null, null);
 		
 		Label description = new Label(group, SWT.WRAP);
 		GridDataFactory.fillDefaults().grab(true, true).hint(150, SWT.DEFAULT).applyTo(description);
 		
 		IObservableValue descriptionTargetObservable = WidgetProperties.text().observe(description);
-		IObservableValue descriptionModelObservable = BeansObservables.observeValue(model, PreferencesPageModel.PN_VERSION_RANGE_CHANGE_STRATEGY_DESCRIPTION);
+		IObservableValue descriptionModelObservable = BeanProperties.value(PreferencesPageModel.PN_VERSION_RANGE_CHANGE_STRATEGY_DESCRIPTION).observe(model);
 		dataBindingContext.bindValue(descriptionTargetObservable, descriptionModelObservable, null, null);
 		
 		model.addPropertyChangeListener(PreferencesPageModel.PN_VERSION_RANGE_CHANGE_STRATEGY_DESCRIPTION, new PropertyChangeListener() {

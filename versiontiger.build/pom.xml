@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.inventage.tools.versiontiger</groupId>
         <artifactId>versiontiger.parent</artifactId>
-        <version>1.4.1-SNAPSHOT</version>
+        <version>1.4.2-SNAPSHOT</version>
         <relativePath>../versiontiger.parent/pom.xml</relativePath>
     </parent>
     
@@ -19,13 +19,13 @@
         <module>../versiontiger.targetplatform</module>
 
         <module>../com.inventage.tools.versiontiger</module>
-        <module>../com.inventage.tools.versiontiger.test</module>
+<!--        <module>../com.inventage.tools.versiontiger.test</module>-->
         <module>../com.inventage.tools.versiontiger.ui</module>
         <module>../com.inventage.tools.versiontiger.universedefinition</module>
         <module>../com.inventage.tools.versiontiger.gui</module>
         <module>../versiontiger.repository</module>
         
-        <module>../versiontiger-maven-plugin</module>
+<!--        <module>../versiontiger-maven-plugin</module>-->
     </modules>
 
 </project>

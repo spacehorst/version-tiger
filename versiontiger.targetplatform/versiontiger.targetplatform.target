@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.6"?>
-
 <target name="Version-Tiger" sequenceNumber="0">
 	<locations>
-	
-		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-			<unit id="org.eclipse.platform.feature.group" version="3.5.1.R35x_v20090910-9gEeG1_FthkNDSP2odXdThaOu9GFDPn83DGB7"/>
-			<repository location="http://download.eclipse.org/releases/galileo/"/>
-		</location>
 		
-		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+		<location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 			<unit id="com.google.guava" version="10.0.1.v201203051515"/>
-			<unit id="org.junit" version="4.8.1.v4_8_1_v20100427-1100"/>
 			<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository/"/>
+			<unit id="org.hamcrest.core" version="1.1.0.v20090501071000"/>
+			<unit id="org.hamcrest.generator" version="1.1.0.v20090501071000"/>
+			<unit id="org.hamcrest.text" version="1.1.0.v20090501071000"/>
+			<unit id="org.junit" version="4.10.0.v4_10_0_v20120426-0900"/>
 		</location>
 		
-		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+		<location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 			<unit id="org.mockito.mockito-all" version="1.9.5"/>
 			<unit id="de.pdark.decentxml" version="1.4.0"/> 
 			<repository location="https://raw.github.com/inventage/version-tiger-repos/master/dependencies/"/>
 		</location>
-		
+		<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+			<repository location="https://download.eclipse.org/eclipse/updates/4.23/"/>
+			<unit id="org.eclipse.emf.common.feature.group" version="2.25.0.v20220123-0838"/>
+			<unit id="org.eclipse.emf.databinding.edit.feature.group" version="1.9.0.v20210924-1718"/>
+			<unit id="org.eclipse.emf.databinding.feature.group" version="1.8.0.v20210924-1718"/>
+			<unit id="org.eclipse.emf.ecore.feature.group" version="2.27.0.v20220123-0838"/>
+			<unit id="org.eclipse.emf.edit.feature.group" version="2.18.0.v20220201-1551"/>
+			<unit id="org.eclipse.platform.feature.group" version="4.23.0.v20220308-0722"/>
+		</location>
 	</locations>
 </target>

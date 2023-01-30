@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.databinding.DataBindingContext;
-import org.eclipse.core.databinding.beans.BeanProperties;
-import org.eclipse.core.databinding.beans.BeansObservables;
+import org.eclipse.core.databinding.beans.typed.BeanProperties;
 import org.eclipse.core.databinding.beans.IBeanValueProperty;
 import org.eclipse.core.databinding.observable.map.IObservableMap;
 import org.eclipse.core.databinding.observable.set.IObservableSet;
@@ -16,7 +15,7 @@ import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.core.databinding.property.Properties;
 import org.eclipse.jface.databinding.viewers.ObservableMapLabelProvider;
 import org.eclipse.jface.databinding.viewers.ObservableSetContentProvider;
-import org.eclipse.jface.databinding.viewers.ViewerProperties;
+import org.eclipse.jface.databinding.viewers.typed.ViewerProperties;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.viewers.ComboViewer;
@@ -196,7 +195,8 @@ public class EditVersionPage extends WizardPage {
 		universeDefinitionCombo.setInput(projectUniverses);
 
 		IObservableValue selectedUniverseDefinition = ViewerProperties.singleSelection().observe(universeDefinitionCombo);
-		IObservableValue universeDefinition = BeansObservables.observeValue(editVersionModel, EditVersionModel.PN_PROJECT_UNIVERSE);
+		
+		IObservableValue universeDefinition = BeanProperties.value(EditVersionModel.PN_PROJECT_UNIVERSE).observe(editVersionModel);
 		dbc.bindValue(selectedUniverseDefinition, universeDefinition);
 
 		ProjectUniverse projectUniverse = findUniverse(projectUniverses, getUniverseId());
@@ -289,7 +289,7 @@ public class EditVersionPage extends WizardPage {
 	}
 
 	private void bindProjectPreviewTable() {
-		IObservableSet observableVersioningProjects = BeansObservables.observeSet(editVersionModel, EditVersionModel.PN_PROJECTS);
+		IObservableSet observableVersioningProjects = BeanProperties.set(EditVersionModel.PN_PROJECTS).observe(editVersionModel);
 		IBeanValueProperty[] labelProperties = BeanProperties.values(new String[] { VersioningProject.PN_PROJECT_ID, VersioningProject.PN_OLD_VERSION, VersioningProject.PN_NEW_VERSION });
 		
 		ObservableSetContentProvider contentProvider = new ObservableSetContentProvider();
